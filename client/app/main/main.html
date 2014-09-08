@@ -1,32 +1,59 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <header class="hero-unit" id="banner">
     <div class="container">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+        <div class="row">
+            <div class="col-md-4">
+                <span>
+                {{isAvilable(selectedRooom)}}
+                </span><br>
+                <span ng-repeat="(key, value) in
+                availabltyFilter(selectedRooom.availablty)" >
+                {{key}},
+                </span>
+            </div>
+            <div class="col-md-4">
+                <google-map
+                control="map.control"
+                center="map.center"
+                draggable="true"
+                zoom="map.zoom">
+                <marker coords="marker.coords"
+                options="marker.options"
+                events="marker.events"
+                idkey="marker.id"
+                control="marker.control"
+                >
+                </marker>
+                </google-map>
+            </div>
+            <div class="col-md-4">
+            <h3>San Francisco, CA</h3>
+                <todays-weather
+                location="San Francisco, CA"
+                custom-size="100"
+                use-google-images="true">
+                </todays-weather>
+
+            </div>
+        </div>
     </div>
 </header>
+<br>
+<div class="clearfix"></div>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <table
-            st-table="rooms"
-            st-pipe="callServer"
-            class="table table-striped">
-                <thead>
-                    <tr>
-                        <th st-sort="name">Name</th>
-                        <th st-sort="userName">User Name</th>
-                        <th st-sort="price">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr st-select-row="row" ng-repeat="row in rooms">
-                        <td>{{row.name}}</td>
-                        <td>{{row.userName}}</td>
-                        <td>{{row.price}}</td>
-                    </tr>
-                </tbody>
+            <table ng-table="tableParams"  class="table">
+                <!-- <tbody> -->
+                <tr ng-repeat="room in $data"
+                    ng-click="handelClick(room)">
+                    <td data-title="'Name'"       sortable="'name'">{{room.name}}</td>
+                    <td data-title="'Price'"     sortable="'price'">{{room.price}}</td>
+                    <td data-title="'Reviews'"   sortable="'reviews'">{{room.reviews}}</td>
+                    <td data-title="'User Name'" sortable="'userName'">{{room.userName}}</td>
+                </tr>
+                <!-- </tbody> -->
             </table>
         </div>
     </div>

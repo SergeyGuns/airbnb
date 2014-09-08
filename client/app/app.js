@@ -6,7 +6,9 @@ angular.module('jobInterviewApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'smart-table'
+  'ngTable',
+  'google-maps',
+  'weatherModule'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

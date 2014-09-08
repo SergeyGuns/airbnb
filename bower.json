@@ -14,7 +14,9 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
-    "angular-smart-table": "*"
+    "ng-table": "~0.3.3",
+    "angular-google-maps": "~1.2.1",
+    "angular-weather-directive": "shusain/angular-sh-weather#~0.0.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
